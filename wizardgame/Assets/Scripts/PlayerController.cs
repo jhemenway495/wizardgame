@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     Vector2 currentDirVelocity = Vector2.zero;
     [SerializeField] float jumpVelocity = 5.0f;
     int jumps = 1;
+    [SerializeField] float dashVelocity = 24.0f;
+    int dashes = 1;
+    
 
 
     //Gravity
@@ -94,6 +97,14 @@ public class PlayerController : MonoBehaviour
             jumps -= 1;
         
         }
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && jumps > 0)
+        {
+            velocityY = 0.0f;
+            currentDir = targetDir * dashVelocity;
+
+        }
+        
+
 
         velocityY += gravity * Time.deltaTime;
 
